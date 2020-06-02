@@ -13,39 +13,39 @@
 // Result: ABCABCDA
 
 function PrintKDistance(string) {
-  const chars = Array.from(string);
-  const map = new Map();
+    const chars = Array.from(string);
+    const map = new Map();
 
-  for (const char of chars) {
-    if (map.has(char)) {
-      map.set(char, map.get(char) + 1);
-    } else {
-      map.set(char, 1);
+    for (const char of chars) {
+        if (map.has(char)) {
+            map.set(char, map.get(char) + 1);
+        } else {
+            map.set(char, 1);
+        }
     }
-  }
 
-  let str = '';
+    let str = '';
 
-  const itr = 1000;
-  let i = 0;
+    const itr = 1000;
+    let i = 0;
 
-  while (map.size > 0) {
-    for (const key of map.keys()) {
-      str += key;
-      // Decrement key
-      map.set(key, map.get(key) - 1);
-      // If key = 0, remove
-      if (map.get(key) === 0) {
-        map.delete(key);
-      }
+    while (map.size > 0) {
+        for (const key of map.keys()) {
+            str += key;
+            // Decrement key
+            map.set(key, map.get(key) - 1);
+            // If key = 0, remove
+            if (map.get(key) === 0) {
+                map.delete(key);
+            }
+        }
+        if (i > itr) {
+            break;
+        }
+        i++;
     }
-    if (i > itr) {
-      break;
-    }
-    i++;
-  }
 
-  return str;
+    return str;
 }
 
 PrintKDistance('AAABBBCC');

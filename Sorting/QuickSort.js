@@ -14,51 +14,51 @@
  * @flow
  */
 export default function QuickSort(items: Array<number>): Array<number> {
-  const itemsCopy = [...items];
-  QuickSortRecursive(itemsCopy, 0, itemsCopy.length - 1);
-  return itemsCopy;
+    const itemsCopy = [...items];
+    QuickSortRecursive(itemsCopy, 0, itemsCopy.length - 1);
+    return itemsCopy;
 }
 
 function QuickSortRecursive(items: Array<number>, p: number, r: number) {
-  if (p < r) {
-    const q = RandomizedPartition(items, p, r);
-    QuickSortRecursive(items, p, q - 1);
-    QuickSortRecursive(items, q + 1, r);
-  }
+    if (p < r) {
+        const q = RandomizedPartition(items, p, r);
+        QuickSortRecursive(items, p, q - 1);
+        QuickSortRecursive(items, q + 1, r);
+    }
 }
 
 function RandomizedPartition(
-  items: Array<number>,
-  p: number,
-  r: number
+    items: Array<number>,
+    p: number,
+    r: number
 ): number {
-  const i = getRandomInt(p, r);
-  Swap(items, i, r);
-  return Partition(items, p, r);
+    const i = getRandomInt(p, r);
+    Swap(items, i, r);
+    return Partition(items, p, r);
 }
 
 function Partition(items: Array<number>, p: number, r: number): number {
-  const x = items[r];
-  let i = p - 1;
+    const x = items[r];
+    let i = p - 1;
 
-  for (let j = p; j < r; j++) {
-    if (items[j] <= x) {
-      i++;
-      Swap(items, i, j);
+    for (let j = p; j < r; j++) {
+        if (items[j] <= x) {
+            i++;
+            Swap(items, i, j);
+        }
     }
-  }
 
-  Swap(items, i + 1, r);
+    Swap(items, i + 1, r);
 
-  return i + 1;
+    return i + 1;
 }
 
 function getRandomInt(min: number, max: number): number {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function Swap(arr: Array<any>, x: any, y: any) {
-  const temp = arr[x];
-  arr[x] = arr[y];
-  arr[y] = temp;
+    const temp = arr[x];
+    arr[x] = arr[y];
+    arr[y] = temp;
 }

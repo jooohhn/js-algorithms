@@ -22,22 +22,22 @@
  * @return {string[]}
  */
 function expandHelper(str, curr, i, res) {
-  if (i >= str.length) {
-    res.push(curr);
-    return;
-  }
-  if (str[i] === '{') {
-    let j = i;
-    while (str[j] !== '}') {
-      j++;
+    if (i >= str.length) {
+        res.push(curr);
+        return;
     }
-    for (let k = i + 1; k < j; k += 2) {
-      if (str[k] === ',') continue;
-      expandHelper(str, curr + str[k], j + 1, res);
+    if (str[i] === '{') {
+        let j = i;
+        while (str[j] !== '}') {
+            j++;
+        }
+        for (let k = i + 1; k < j; k += 2) {
+            if (str[k] === ',') continue;
+            expandHelper(str, curr + str[k], j + 1, res);
+        }
+    } else {
+        expandHelper(str, curr + str[i], i + 1, res);
     }
-  } else {
-    expandHelper(str, curr + str[i], i + 1, res);
-  }
 }
 
 /**
@@ -45,7 +45,7 @@ function expandHelper(str, curr, i, res) {
  * @return {string[]}
  */
 export default function expand(S) {
-  const res = [];
-  expandHelper(S, '', 0, res);
-  return res.sort();
+    const res = [];
+    expandHelper(S, '', 0, res);
+    return res.sort();
 }

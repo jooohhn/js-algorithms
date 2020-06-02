@@ -37,10 +37,10 @@
  */
 
 const kthSmallestAux = (root, ans) => {
-  if (!root) return;
-  if (root.left) kthSmallestAux(root.left, ans);
-  ans.push(root.val);
-  if (root.right) kthSmallestAux(root.right, ans);
+    if (!root) return;
+    if (root.left) kthSmallestAux(root.left, ans);
+    ans.push(root.val);
+    if (root.right) kthSmallestAux(root.right, ans);
 };
 
 /**
@@ -49,8 +49,8 @@ const kthSmallestAux = (root, ans) => {
  * @return {number}
  */
 export default function kthSmallest(root, k) {
-  if (!root) return -1;
-  const ans = [];
-  kthSmallestAux(root, ans);
-  return ans[k - 1];
+    if (!root) return -1;
+    const ans = [];
+    kthSmallestAux(root, ans);
+    return ans[k - 1];
 }

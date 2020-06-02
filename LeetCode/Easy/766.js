@@ -43,21 +43,21 @@
 // Space: O(1)
 
 function checkDiag(arr, i, j, c, r, v) {
-  for (; c < j && r < i; c++, r++) {
-    if (arr[r][c] !== v) return false;
-  }
-  return true;
+    for (; c < j && r < i; c++, r++) {
+        if (arr[r][c] !== v) return false;
+    }
+    return true;
 }
 
 export default function isToeplitzMatrix(arr) {
-  if (!arr.length) return true;
-  const i = arr.length;
-  const j = arr[0].length;
-  for (let c = 0; c < arr[0].length; c++) {
-    if (!checkDiag(arr, i, j, c, 0, arr[0][c])) return false;
-  }
-  for (let r = 0; r < arr.length; r++) {
-    if (!checkDiag(arr, i, j, 0, r, arr[r][0])) return false;
-  }
-  return true;
+    if (!arr.length) return true;
+    const i = arr.length;
+    const j = arr[0].length;
+    for (let c = 0; c < arr[0].length; c++) {
+        if (!checkDiag(arr, i, j, c, 0, arr[0][c])) return false;
+    }
+    for (let r = 0; r < arr.length; r++) {
+        if (!checkDiag(arr, i, j, 0, r, arr[r][0])) return false;
+    }
+    return true;
 }

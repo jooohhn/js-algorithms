@@ -21,23 +21,23 @@
  * @return {number}
  */
 export default function majorityElement(nums) {
-  if (!nums.length) return 0;
-  let majorityIndex = 0;
-  let count = 1;
+    if (!nums.length) return 0;
+    let majorityIndex = 0;
+    let count = 1;
 
-  for (let i = 1; i < nums.length; i++) {
-    // If current num === majority number, count++
-    if (nums[i] === nums[majorityIndex]) {
-      count++;
-    } else {
-      count--;
+    for (let i = 1; i < nums.length; i++) {
+        // If current num === majority number, count++
+        if (nums[i] === nums[majorityIndex]) {
+            count++;
+        } else {
+            count--;
+        }
+        // If count === 0, set to current num
+        if (count === 0) {
+            majorityIndex = i;
+            count = 1;
+        }
     }
-    // If count === 0, set to current num
-    if (count === 0) {
-      majorityIndex = i;
-      count = 1;
-    }
-  }
 
-  return nums[majorityIndex];
+    return nums[majorityIndex];
 }

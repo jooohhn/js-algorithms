@@ -12,20 +12,20 @@
  * @flow
  */
 export default function InsertionSort(items: Array<number>): Array<number> {
-  const itemsCopy = [...items];
-  let value; // the value currently being compared
-  let i; // index of first element in unsorted section
-  let j; // index going into sorted section
+    const itemsCopy = [...items];
+    let value; // the value currently being compared
+    let i; // index of first element in unsorted section
+    let j; // index going into sorted section
 
-  for (i = 0; i < itemsCopy.length; i++) {
-    value = itemsCopy[i];
-    j = i - 1;
-    while (j >= 0 && itemsCopy[j] > value) {
-      itemsCopy[j + 1] = itemsCopy[j];
-      j--;
+    for (i = 0; i < itemsCopy.length; i++) {
+        value = itemsCopy[i];
+        j = i - 1;
+        while (j >= 0 && itemsCopy[j] > value) {
+            itemsCopy[j + 1] = itemsCopy[j];
+            j--;
+        }
+        itemsCopy[j + 1] = value;
     }
-    itemsCopy[j + 1] = value;
-  }
 
-  return itemsCopy;
+    return itemsCopy;
 }

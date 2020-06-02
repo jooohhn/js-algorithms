@@ -2,25 +2,25 @@
 // All methods should work in O(1) time.
 
 export default class MovingProduct {
-  constructor(n) {
-    this.n = n;
-    this.prod = 1;
-    this.nums = [];
-    this.i = 0;
-  }
-
-  add(n) {
-    this.nums.push(n);
-    if (this.nums.length > this.n) {
-      this.prod /= this.nums[this.i];
-      this.i++;
+    constructor(n) {
+        this.n = n;
+        this.prod = 1;
+        this.nums = [];
+        this.i = 0;
     }
-    this.prod *= n;
-  }
 
-  getProduct() {
-    return this.prod;
-  }
+    add(n) {
+        this.nums.push(n);
+        if (this.nums.length > this.n) {
+            this.prod /= this.nums[this.i];
+            this.i++;
+        }
+        this.prod *= n;
+    }
+
+    getProduct() {
+        return this.prod;
+    }
 }
 
 const window = new MovingProduct(3);

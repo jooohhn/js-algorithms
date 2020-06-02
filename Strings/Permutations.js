@@ -18,24 +18,24 @@ let permutations = 0;
  * @complexity: O(n!), where n is the length of the string
  */
 export default function StringPermutationsRecursive(string: string): number {
-  if (string.length === 1) {
-    permutations++;
-  }
+    if (string.length === 1) {
+        permutations++;
+    }
 
-  const _string = string.split('');
+    const _string = string.split('');
 
-  for (let i = 0; i < _string.length; i++) {
-    StringPermutationsRecursive(
-      _string.filter((e: any, _i: number): boolean => _i !== i).join('')
-    );
-  }
+    for (let i = 0; i < _string.length; i++) {
+        StringPermutationsRecursive(
+            _string.filter((e: any, _i: number): boolean => _i !== i).join('')
+        );
+    }
 
-  return permutations;
+    return permutations;
 }
 
 /**
  * @complexity: O(n), where n is the length of the string
  */
 export function StringPermutationsRecursiveFactorial(string: string): number {
-  return Factorial(string.length);
+    return Factorial(string.length);
 }

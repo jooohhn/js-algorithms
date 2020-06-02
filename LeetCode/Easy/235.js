@@ -25,21 +25,21 @@
  */
 
 const dfs = (root, p, q, path, paths) => {
-  if (!root) return;
-  path.push(root);
-  if (root.val === p.val || root.val === q.val) paths.push([...path]);
-  if (root.left) dfs(root.left, p, q, [...path], paths);
-  if (root.right) dfs(root.right, p, q, [...path], paths);
+    if (!root) return;
+    path.push(root);
+    if (root.val === p.val || root.val === q.val) paths.push([...path]);
+    if (root.left) dfs(root.left, p, q, [...path], paths);
+    if (root.right) dfs(root.right, p, q, [...path], paths);
 };
 
 export default function lowestCommonAncestor(root, p, q) {
-  const paths = [];
-  dfs(root, p, q, [], paths);
-  let [a, b] = paths;
-  b = new Set(b);
-  a = a.reverse();
-  for (let i = 0; i < a.length; i++) {
-    if (b.has(a[i])) return a[i];
-  }
-  return -1;
+    const paths = [];
+    dfs(root, p, q, [], paths);
+    let [a, b] = paths;
+    b = new Set(b);
+    a = a.reverse();
+    for (let i = 0; i < a.length; i++) {
+        if (b.has(a[i])) return a[i];
+    }
+    return -1;
 }

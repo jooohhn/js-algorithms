@@ -19,20 +19,20 @@
 //   []
 // ]
 const subsetsAux = (nums, prev, start, res) => {
-  if (start === nums.length || start === prev.length) {
-    res.push(prev);
-    return res;
-  }
-  const remove = [];
-  for (let i = 0; i < prev.length; i++) {
-    if (start === i) {
-      continue;
+    if (start === nums.length || start === prev.length) {
+        res.push(prev);
+        return res;
     }
-    remove.push(prev[i]);
-  }
-  subsetsAux(nums, [...prev], start + 1, res);
-  subsetsAux(nums, [...remove], start, res);
-  return res;
+    const remove = [];
+    for (let i = 0; i < prev.length; i++) {
+        if (start === i) {
+            continue;
+        }
+        remove.push(prev[i]);
+    }
+    subsetsAux(nums, [...prev], start + 1, res);
+    subsetsAux(nums, [...remove], start, res);
+    return res;
 };
 
 /**
@@ -40,6 +40,6 @@ const subsetsAux = (nums, prev, start, res) => {
  * @return {number[][]}
  */
 export default function subsets(nums) {
-  const res = [];
-  return subsetsAux(nums, [...nums], 0, res);
+    const res = [];
+    return subsetsAux(nums, [...nums], 0, res);
 }

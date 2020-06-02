@@ -11,13 +11,13 @@
 // https://leetcode.com/problems/house-robber/discuss/156523/From-good-to-great.-How-to-approach-most-of-DP-problems
 
 const robAux = (nums, i, map) => {
-  if (i >= nums.length) return 0;
-  if (map.has(i)) return map.get(i);
-  const a = robAux(nums, i + 1, map);
-  const b = robAux(nums, i + 2, map);
-  const curr = Math.max(a, b + nums[i]);
-  map.set(i, curr);
-  return curr;
+    if (i >= nums.length) return 0;
+    if (map.has(i)) return map.get(i);
+    const a = robAux(nums, i + 1, map);
+    const b = robAux(nums, i + 2, map);
+    const curr = Math.max(a, b + nums[i]);
+    map.set(i, curr);
+    return curr;
 };
 
 /**
@@ -25,6 +25,6 @@ const robAux = (nums, i, map) => {
  * @return {number}
  */
 export default function rob(nums) {
-  const map = new Map();
-  return robAux(nums, 0, map);
+    const map = new Map();
+    return robAux(nums, 0, map);
 }

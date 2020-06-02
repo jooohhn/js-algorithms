@@ -1,63 +1,63 @@
 // @flow
 class Node {
-  data: Object = {};
+    data: Object = {};
 
-  next: Node | boolean = false;
+    next: Node | boolean = false;
 
-  constructor(data: any = {}, next: Node | boolean = false) {
-    this.data = data;
-    this.next = next;
-  }
+    constructor(data: any = {}, next: Node | boolean = false) {
+        this.data = data;
+        this.next = next;
+    }
 
-  hasNext(): boolean {
-    return this.next !== false;
-  }
+    hasNext(): boolean {
+        return this.next !== false;
+    }
 }
 
 export default class DoublyLinkedList {
-  head: Node;
+    head: Node;
 
-  tail: Node;
+    tail: Node;
 
-  head: Node;
+    head: Node;
 
-  integrity = new Set();
+    integrity = new Set();
 
-  constructor() {
-    this.head = new Node({});
-    this.tail = this.head;
-  }
-
-  isEmpty(): boolean {
-    return !!this.head;
-  }
-
-  // Remove first link
-  remove() {
-    if (!this.isEmpty() && this.head.hasNext()) {
-      this.head = this.head.next;
+    constructor() {
+        this.head = new Node({});
+        this.tail = this.head;
     }
-  }
 
-  has() {}
+    isEmpty(): boolean {
+        return !!this.head;
+    }
 
-  next() {}
+    // Remove first link
+    remove() {
+        if (!this.isEmpty() && this.head.hasNext()) {
+            this.head = this.head.next;
+        }
+    }
 
-  // @TODO
-  // insertList(list: DoublyLinkedList): bool {}
+    has() {}
 
-  /**
-   * Append node to end of list
-   */
-  insert(data: any, begin?: Node): boolean {
-    const target: Node = begin || this.tail;
-    const node: Node = new Node(data);
+    next() {}
 
-    const tempNext = target.next;
-    node.next = tempNext;
+    // @TODO
+    // insertList(list: DoublyLinkedList): bool {}
 
-    target.next = node;
+    /**
+     * Append node to end of list
+     */
+    insert(data: any, begin?: Node): boolean {
+        const target: Node = begin || this.tail;
+        const node: Node = new Node(data);
 
-    return true;
-  }
+        const tempNext = target.next;
+        node.next = tempNext;
+
+        target.next = node;
+
+        return true;
+    }
 }

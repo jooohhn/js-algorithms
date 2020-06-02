@@ -17,17 +17,17 @@
 // S will consist only of letters or digits.
 
 const letterCasePermutationAux = (S, i, str, res) => {
-  if (i >= S.length) {
-    res.push(str);
-    return;
-  }
-  // If S[i] is a letter
-  if (Number.isNaN(parseInt(S[i], 10))) {
-    letterCasePermutationAux(S, i + 1, str + S[i].toLowerCase(), res);
-    letterCasePermutationAux(S, i + 1, str + S[i].toUpperCase(), res);
-  } else {
-    letterCasePermutationAux(S, i + 1, str + S[i], res);
-  }
+    if (i >= S.length) {
+        res.push(str);
+        return;
+    }
+    // If S[i] is a letter
+    if (Number.isNaN(parseInt(S[i], 10))) {
+        letterCasePermutationAux(S, i + 1, str + S[i].toLowerCase(), res);
+        letterCasePermutationAux(S, i + 1, str + S[i].toUpperCase(), res);
+    } else {
+        letterCasePermutationAux(S, i + 1, str + S[i], res);
+    }
 };
 
 /**
@@ -35,7 +35,7 @@ const letterCasePermutationAux = (S, i, str, res) => {
  * @return {string[]}
  */
 export default function letterCasePermutation(S) {
-  const res = [];
-  letterCasePermutationAux(S, 0, '', res);
-  return res;
+    const res = [];
+    letterCasePermutationAux(S, 0, '', res);
+    return res;
 }

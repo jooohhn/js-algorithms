@@ -13,27 +13,27 @@
  * @return {ListNode}
  */
 export default function removeElements(head, val) {
-  if (head === null) return null;
-  let prev = null;
-  let curr = head;
-  let next = null;
-  let hasHead = false;
-  while (curr) {
-    next = curr.next;
-    if (curr.val === val) {
-      // delete
-      curr = null;
-      // join links
-      if (prev) prev.next = next;
-    } else {
-      prev = curr;
-      if (!hasHead) {
-        head = curr;
-        hasHead = true;
-      }
+    if (head === null) return null;
+    let prev = null;
+    let curr = head;
+    let next = null;
+    let hasHead = false;
+    while (curr) {
+        next = curr.next;
+        if (curr.val === val) {
+            // delete
+            curr = null;
+            // join links
+            if (prev) prev.next = next;
+        } else {
+            prev = curr;
+            if (!hasHead) {
+                head = curr;
+                hasHead = true;
+            }
+        }
+        curr = next;
     }
-    curr = next;
-  }
-  if (!prev) head = null;
-  return head;
+    if (!prev) head = null;
+    return head;
 }

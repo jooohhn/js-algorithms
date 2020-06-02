@@ -23,27 +23,27 @@ type mazeType = Array<Array<num>>;
 const solutions = [];
 
 export default function Maze(
-  maze: mazeType,
-  x: num,
-  y: num,
-  path: mazeType = []
+    maze: mazeType,
+    x: num,
+    y: num,
+    path: mazeType = []
 ) {
-  const mazeLength = maze.length;
+    const mazeLength = maze.length;
 
-  if (x === maze.length - 1 && y === maze.length - 1) {
-    solutions.push(path);
-  }
+    if (x === maze.length - 1 && y === maze.length - 1) {
+        solutions.push(path);
+    }
 
-  const yPath = [...path];
-  yPath.push([x + 1, y]);
+    const yPath = [...path];
+    yPath.push([x + 1, y]);
 
-  const xPath = [...path];
-  xPath.push([x, y + 1]);
+    const xPath = [...path];
+    xPath.push([x, y + 1]);
 
-  if (maze[x][y] > 0) {
-    if (x + 1 < mazeLength) Maze(maze, x + 1, y, yPath);
-    if (y + 1 < mazeLength) Maze(maze, x, y + 1, xPath);
-  }
+    if (maze[x][y] > 0) {
+        if (x + 1 < mazeLength) Maze(maze, x + 1, y, yPath);
+        if (y + 1 < mazeLength) Maze(maze, x, y + 1, xPath);
+    }
 
-  return solutions;
+    return solutions;
 }

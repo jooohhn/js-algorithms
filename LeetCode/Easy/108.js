@@ -18,11 +18,11 @@
 import { TreeNode } from '../globals';
 
 export default function sortedArrayToBST(nums) {
-  if (nums.length === 0) return null;
-  const index = parseInt(nums.length / 2, 10);
-  const mid = nums[index];
-  const root = new TreeNode(mid);
-  root.left = sortedArrayToBST(nums.slice(0, index));
-  root.right = sortedArrayToBST(nums.slice(index + 1));
-  return root;
+    if (nums.length === 0) return null;
+    const index = parseInt(nums.length / 2, 10);
+    const mid = nums[index];
+    const root = new TreeNode(mid);
+    root.left = sortedArrayToBST(nums.slice(0, index));
+    root.right = sortedArrayToBST(nums.slice(index + 1));
+    return root;
 }

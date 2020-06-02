@@ -21,23 +21,23 @@
  */
 
 const traverse = (grid, i, j, dpTable) => {
-  if (i === grid.length - 1 && j === grid[0].length - 1) return grid[i][j];
-  if (i < 0 || j < 0 || i === grid.length || j === grid[0].length)
-    return Infinity;
-  if (dpTable[i][j]) return dpTable[i][j];
-  const min = Math.min(
-    traverse(grid, i + 1, j, dpTable),
-    traverse(grid, i, j + 1, dpTable)
-  );
-  const res = grid[i][j] + min;
-  dpTable[i][j] = res;
-  return res;
+    if (i === grid.length - 1 && j === grid[0].length - 1) return grid[i][j];
+    if (i < 0 || j < 0 || i === grid.length || j === grid[0].length)
+        return Infinity;
+    if (dpTable[i][j]) return dpTable[i][j];
+    const min = Math.min(
+        traverse(grid, i + 1, j, dpTable),
+        traverse(grid, i, j + 1, dpTable)
+    );
+    const res = grid[i][j] + min;
+    dpTable[i][j] = res;
+    return res;
 };
 
 export default function minPathSum(grid) {
-  const dpTable = new Array(grid.length);
-  for (let i = 0; i < grid.length; i++) {
-    dpTable[i] = [];
-  }
-  return traverse(grid, 0, 0, dpTable);
+    const dpTable = new Array(grid.length);
+    for (let i = 0; i < grid.length; i++) {
+        dpTable[i] = [];
+    }
+    return traverse(grid, 0, 0, dpTable);
 }

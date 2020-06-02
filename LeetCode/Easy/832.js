@@ -11,19 +11,19 @@
  * @return {number[][]}
  */
 export default function flipAndInvertImage(A) {
-  // Take the transpose of the matrix
-  for (let i = 0; i < A.length; i++) {
-    // Flip each row
-    for (let j = 0; j < Math.floor(A[i].length / 2); j++) {
-      const a = A[i][j];
-      const b = A[i][A[i].length - 1 - j];
-      A[i][j] = b === 0 ? 1 : 0;
-      A[i][A[i].length - 1 - j] = a === 0 ? 1 : 0;
+    // Take the transpose of the matrix
+    for (let i = 0; i < A.length; i++) {
+        // Flip each row
+        for (let j = 0; j < Math.floor(A[i].length / 2); j++) {
+            const a = A[i][j];
+            const b = A[i][A[i].length - 1 - j];
+            A[i][j] = b === 0 ? 1 : 0;
+            A[i][A[i].length - 1 - j] = a === 0 ? 1 : 0;
+        }
+        if (A[i].length % 2 !== 0) {
+            A[i][Math.floor(A[i].length / 2)] =
+                A[i][Math.floor(A[i].length / 2)] === 0 ? 1 : 0;
+        }
     }
-    if (A[i].length % 2 !== 0) {
-      A[i][Math.floor(A[i].length / 2)] =
-        A[i][Math.floor(A[i].length / 2)] === 0 ? 1 : 0;
-    }
-  }
-  return A;
+    return A;
 }

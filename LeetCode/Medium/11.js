@@ -7,20 +7,20 @@
  * @return {number}
  */
 export default function maxArea(height) {
-  let width = height.length - 1;
-  let lo = 0;
-  let hi = height.length - 1;
-  let max = 0;
-  while (lo < hi) {
-    const loVal = height[lo];
-    const hiVal = height[hi];
-    max = Math.max(max, width * Math.min(hiVal, loVal));
-    if (loVal < hiVal) {
-      lo++;
-    } else {
-      hi--;
+    let width = height.length - 1;
+    let lo = 0;
+    let hi = height.length - 1;
+    let max = 0;
+    while (lo < hi) {
+        const loVal = height[lo];
+        const hiVal = height[hi];
+        max = Math.max(max, width * Math.min(hiVal, loVal));
+        if (loVal < hiVal) {
+            lo++;
+        } else {
+            hi--;
+        }
+        width--;
     }
-    width--;
-  }
-  return max;
+    return max;
 }

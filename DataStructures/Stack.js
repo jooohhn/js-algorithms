@@ -26,34 +26,34 @@
  * @flow
  */
 export default class Stack {
-  items: [];
+    items: [];
 
-  constructor(items?: any[]) {
-    this.items = items || [];
-  }
-
-  pop(): any {
-    const isEnd = !!this.items.length;
-
-    if (isEnd) {
-      const item = this.items[this.items.length - 1];
-      this.items.splice(this.items.length - 1, 1);
-      return item;
+    constructor(items?: any[]) {
+        this.items = items || [];
     }
 
-    return false;
-  }
+    pop(): any {
+        const isEnd = !!this.items.length;
 
-  push(item: any): Stack {
-    this.items.push(item);
-    return this;
-  }
+        if (isEnd) {
+            const item = this.items[this.items.length - 1];
+            this.items.splice(this.items.length - 1, 1);
+            return item;
+        }
 
-  empty(): boolean {
-    return this.items.length === 0;
-  }
+        return false;
+    }
 
-  peek(): any {
-    return this.items[this.items.length - 1];
-  }
+    push(item: any): Stack {
+        this.items.push(item);
+        return this;
+    }
+
+    empty(): boolean {
+        return this.items.length === 0;
+    }
+
+    peek(): any {
+        return this.items[this.items.length - 1];
+    }
 }

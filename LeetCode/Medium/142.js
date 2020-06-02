@@ -19,15 +19,15 @@
  * @return {ListNode}
  */
 export default function detectCycle(head) {
-  let i = 0;
-  const map = new Map();
-  if (!head) return null;
-  let curr = head;
-  while (curr && curr.next) {
-    map.set(curr, i);
-    curr = curr.next;
-    if (map.has(curr)) return curr;
-    i++;
-  }
-  return null;
+    let i = 0;
+    const map = new Map();
+    if (!head) return null;
+    let curr = head;
+    while (curr && curr.next) {
+        map.set(curr, i);
+        curr = curr.next;
+        if (map.has(curr)) return curr;
+        i++;
+    }
+    return null;
 }

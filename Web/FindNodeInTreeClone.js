@@ -12,17 +12,17 @@
  * k = branching factor of tree
  */
 function findXInA(root, x) {
-  let node = x;
-  const paths = [];
-  while (node !== root) {
-    const nodeIndex = Array.prototype.indexOf.call(
-      node.parentElement.children,
-      node
-    );
-    paths.push(nodeIndex);
-    node = node.parentElement;
-  }
-  return paths.reverse();
+    let node = x;
+    const paths = [];
+    while (node !== root) {
+        const nodeIndex = Array.prototype.indexOf.call(
+            node.parentElement.children,
+            node
+        );
+        paths.push(nodeIndex);
+        node = node.parentElement;
+    }
+    return paths.reverse();
 }
 
 /**
@@ -30,13 +30,13 @@ function findXInA(root, x) {
  * n = number of nodes in tree B
  */
 function traversePathInB(B, paths) {
-  let node = B;
+    let node = B;
 
-  for (let i = 0; i < paths.length; i++) {
-    node = node.children[i];
-  }
+    for (let i = 0; i < paths.length; i++) {
+        node = node.children[i];
+    }
 
-  return node;
+    return node;
 }
 
 /**
@@ -45,6 +45,6 @@ function traversePathInB(B, paths) {
  * k = branching factor of tree
  */
 export default function findX(A, B, x) {
-  const paths = findXInA(A, x);
-  return traversePathInB(B, paths);
+    const paths = findXInA(A, x);
+    return traversePathInB(B, paths);
 }

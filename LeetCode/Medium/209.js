@@ -16,17 +16,17 @@
  * @return {number}
  */
 export default function minSubArrayLen(s, nums) {
-  let result = Number.MAX_SAFE_INTEGER;
-  let left = 0;
-  let sum = 0;
-  for (let i = 0; i < nums.length; i++) {
-    if (result === 1) return 1;
-    sum += nums[i];
-    while (sum >= s) {
-      result = Math.min(i - left + 1, result);
-      sum -= nums[left];
-      left++;
+    let result = Number.MAX_SAFE_INTEGER;
+    let left = 0;
+    let sum = 0;
+    for (let i = 0; i < nums.length; i++) {
+        if (result === 1) return 1;
+        sum += nums[i];
+        while (sum >= s) {
+            result = Math.min(i - left + 1, result);
+            sum -= nums[left];
+            left++;
+        }
     }
-  }
-  return result === Number.MAX_SAFE_INTEGER ? 0 : result;
+    return result === Number.MAX_SAFE_INTEGER ? 0 : result;
 }

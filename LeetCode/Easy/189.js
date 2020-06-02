@@ -29,19 +29,19 @@
  */
 
 const reverse = (arr, i, j) => {
-  while (i < j) {
-    const tmp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = tmp;
-    i++;
-    j--;
-  }
-  return arr;
+    while (i < j) {
+        const tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
+        i++;
+        j--;
+    }
+    return arr;
 };
 
 export default function rotate(nums, k) {
-  k %= nums.length;
-  reverse(nums, 0, nums.length - 1);
-  reverse(nums, 0, k - 1);
-  return reverse(nums, k, nums.length - 1);
+    k %= nums.length;
+    reverse(nums, 0, nums.length - 1);
+    reverse(nums, 0, k - 1);
+    return reverse(nums, k, nums.length - 1);
 }

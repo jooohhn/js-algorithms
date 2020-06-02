@@ -53,62 +53,62 @@
 // return distane
 
 function createGrid(keypad) {
-  const grid = new Array(4);
-  for (let i = 0; i < 4; i++) {
-    grid[i] = new Array(4);
-  }
-  let i = -1;
-  for (let k = 0; k < 16; k++) {
-    const j = k % 4;
-    if (j === 0) {
-      i++;
+    const grid = new Array(4);
+    for (let i = 0; i < 4; i++) {
+        grid[i] = new Array(4);
     }
-    grid[i][j] = keypad[k];
-  }
-  return grid;
+    let i = -1;
+    for (let k = 0; k < 16; k++) {
+        const j = k % 4;
+        if (j === 0) {
+            i++;
+        }
+        grid[i][j] = keypad[k];
+    }
+    return grid;
 }
 
 function findCords(grid, char) {
-  for (let i = 0; i < 4; i++) {
-    for (let j = 0; j < 4; j++) {
-      if (grid[i][j] === char) return [i, j];
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+            if (grid[i][j] === char) return [i, j];
+        }
     }
-  }
 }
 
 function bfs(grid, target, iInit, jInit) {
-  const queue = [[iInit, jInit, 0]];
-  const visited = new Set();
-  while (queue.length) {
-    const [i, j, d] = queue.shift();
-    const key = [i, j].join('-');
-    if (visited.has(key)) continue;
-    visited.add(key);
-    if (i < 0 || j < 0 || i >= 4 || j >= 4) continue;
-    const item = grid[i][j];
-    if (item === target) return d;
+    const queue = [[iInit, jInit, 0]];
+    const visited = new Set();
+    while (queue.length) {
+        const [i, j, d] = queue.shift();
+        const key = [i, j].join('-');
+        if (visited.has(key)) continue;
+        visited.add(key);
+        if (i < 0 || j < 0 || i >= 4 || j >= 4) continue;
+        const item = grid[i][j];
+        if (item === target) return d;
 
-    queue.push([i - 1, j - 1, d + 1]);
-    queue.push([i - 1, j, d + 1]);
-    queue.push([i - 1, j + 1, d + 1]);
+        queue.push([i - 1, j - 1, d + 1]);
+        queue.push([i - 1, j, d + 1]);
+        queue.push([i - 1, j + 1, d + 1]);
 
-    queue.push([i + 1, j - 1, d + 1]);
-    queue.push([i + 1, j, d + 1]);
-    queue.push([i + 1, j + 1, d + 1]);
+        queue.push([i + 1, j - 1, d + 1]);
+        queue.push([i + 1, j, d + 1]);
+        queue.push([i + 1, j + 1, d + 1]);
 
-    queue.push([j, j - 1, d + 1]);
-    queue.push([i, j + 1, d + 1]);
-  }
+        queue.push([j, j - 1, d + 1]);
+        queue.push([i, j + 1, d + 1]);
+    }
 }
 
 function entryTime(password, keypad) {
-  const grid = createGrid(keypad);
-  let totalDist = 0;
-  for (let i = 1; i < password.length; i++) {
-    const [iFrom, jFrom] = findCords(grid, password[i - 1]);
-    totalDist += bfs(grid, password[i], iFrom, jFrom);
-  }
-  return totalDist;
+    const grid = createGrid(keypad);
+    let totalDist = 0;
+    for (let i = 1; i < password.length; i++) {
+        const [iFrom, jFrom] = findCords(grid, password[i - 1]);
+        totalDist += bfs(grid, password[i], iFrom, jFrom);
+    }
+    return totalDist;
 }
 
 console.log(entryTime('15ebb', '0123456789abcdef'));

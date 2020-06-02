@@ -3,35 +3,35 @@
 const expect = require('expect');
 
 function shouldRun(code) {
-  const stack = [];
-  let strIsOpen = false;
-  const mappings = new Map([
-    [')', '('],
-    ['}', '{'],
-    [']', '[']
-  ]);
+    const stack = [];
+    let strIsOpen = false;
+    const mappings = new Map([
+        [')', '('],
+        ['}', '{'],
+        [']', '[']
+    ]);
 
-  const opening = new Set(mappings.values());
+    const opening = new Set(mappings.values());
 
-  for (let i = 0; i < code.length; i++) {
-    if (code[i] === '`') {
-      strIsOpen = !strIsOpen;
+    for (let i = 0; i < code.length; i++) {
+        if (code[i] === '`') {
+            strIsOpen = !strIsOpen;
+        }
+        if (strIsOpen) {
+            continue;
+        }
+        if (opening.has(code[i])) {
+            stack.push(code[i]);
+        } else if (mappings.has(code[i])) {
+            if (stack[stack.length - 1] === mappings.get(code[i])) {
+                stack.pop();
+            } else {
+                console.error('closing with invalid char');
+            }
+        }
     }
-    if (strIsOpen) {
-      continue;
-    }
-    if (opening.has(code[i])) {
-      stack.push(code[i]);
-    } else if (mappings.has(code[i])) {
-      if (stack[stack.length - 1] === mappings.get(code[i])) {
-        stack.pop();
-      } else {
-        console.error('closing with invalid char');
-      }
-    }
-  }
 
-  return stack.length === 0 && !strIsOpen;
+    return stack.length === 0 && !strIsOpen;
 }
 
 // nums

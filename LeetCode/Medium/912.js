@@ -17,37 +17,37 @@
 // -50000 <= A[i] <= 50000
 
 const merge = (left, right) => {
-  const merged = [];
-  let leftI = 0;
-  let rightI = 0;
+    const merged = [];
+    let leftI = 0;
+    let rightI = 0;
 
-  while (merged.length < left.length + right.length) {
-    if (leftI === left.length) {
-      merged.push(right[rightI]);
-      rightI++;
-    } else if (rightI === right.length) {
-      merged.push(left[leftI]);
-      leftI++;
-    } else if (left[leftI] < right[rightI]) {
-      merged.push(left[leftI]);
-      leftI++;
-    } else {
-      merged.push(right[rightI]);
-      rightI++;
+    while (merged.length < left.length + right.length) {
+        if (leftI === left.length) {
+            merged.push(right[rightI]);
+            rightI++;
+        } else if (rightI === right.length) {
+            merged.push(left[leftI]);
+            leftI++;
+        } else if (left[leftI] < right[rightI]) {
+            merged.push(left[leftI]);
+            leftI++;
+        } else {
+            merged.push(right[rightI]);
+            rightI++;
+        }
     }
-  }
 
-  return merged;
+    return merged;
 };
 
 const mergeSort = arr => {
-  // console.log(arr)
-  if (arr.length <= 1) return arr;
-  const mid = Math.floor(arr.length / 2);
-  const left = mergeSort(arr.slice(0, mid));
-  const right = mergeSort(arr.slice(mid));
+    // console.log(arr)
+    if (arr.length <= 1) return arr;
+    const mid = Math.floor(arr.length / 2);
+    const left = mergeSort(arr.slice(0, mid));
+    const right = mergeSort(arr.slice(mid));
 
-  return merge(left, right);
+    return merge(left, right);
 };
 
 /**
@@ -55,5 +55,5 @@ const mergeSort = arr => {
  * @return {number[]}
  */
 export default function sortArray(nums) {
-  return mergeSort(nums);
+    return mergeSort(nums);
 }

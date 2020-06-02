@@ -14,5 +14,5 @@
 //
 // @flow
 export default function CanWinNim(n: number): boolean {
-  return (n / 4) % 1 !== 0;
+    return (n / 4) % 1 !== 0;
 }

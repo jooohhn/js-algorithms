@@ -9,26 +9,26 @@
  * @flow
  */
 export default function CheckAddition(target: number, list: number[]): boolean {
-  const map = new Map();
+    const map = new Map();
 
-  for (let i = 0; i < list.length; i++) {
-    if (map.has(list[i])) {
-      const curr = map.get(list[i]);
-      map.set(list[i], curr + 1);
-    } else {
-      map.set(list[i], 1);
+    for (let i = 0; i < list.length; i++) {
+        if (map.has(list[i])) {
+            const curr = map.get(list[i]);
+            map.set(list[i], curr + 1);
+        } else {
+            map.set(list[i], 1);
+        }
     }
-  }
 
-  for (let i = 0; i < list.length; i++) {
-    const res = target - list[i];
-    if (map.has(res)) {
-      if (res === list[i]) {
-        return map.get(res) > 1;
-      }
-      return true;
+    for (let i = 0; i < list.length; i++) {
+        const res = target - list[i];
+        if (map.has(res)) {
+            if (res === list[i]) {
+                return map.get(res) > 1;
+            }
+            return true;
+        }
     }
-  }
 
-  return false;
+    return false;
 }

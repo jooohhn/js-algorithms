@@ -10,17 +10,17 @@
 // Space Complexity: O(n+1)
 
 export function TreeNode(val: any) {
-  this.val = val;
-  this.right = null;
-  this.left = this.right;
+    this.val = val;
+    this.right = null;
+    this.left = this.right;
 }
 
 const isBalancedAux = node => {
-  if (!node) return 0;
-  const left = isBalancedAux(node.left);
-  const right = isBalancedAux(node.right);
-  if (left === -1 || right === -1 || Math.abs(left - right) > 1) return -1;
-  return Math.max(left, right) + 1;
+    if (!node) return 0;
+    const left = isBalancedAux(node.left);
+    const right = isBalancedAux(node.right);
+    if (left === -1 || right === -1 || Math.abs(left - right) > 1) return -1;
+    return Math.max(left, right) + 1;
 };
 
 /**
@@ -28,6 +28,6 @@ const isBalancedAux = node => {
  * @return {boolean}
  */
 export default function isBalanced(root) {
-  if (!root) return true;
-  return isBalancedAux(root) !== -1;
+    if (!root) return true;
+    return isBalancedAux(root) !== -1;
 }

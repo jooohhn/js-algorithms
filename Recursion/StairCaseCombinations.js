@@ -21,13 +21,13 @@ type num = number;
 // Use recursion to find number of steps
 // @complexity: O(2^n)
 export function StairCaseCombinationRecursive(stairs: num): num {
-  if (stairs <= 0) return 0;
-  if (stairs === 1) return 1;
-  if (stairs === 2) return 2;
-  return (
-    StairCaseCombinationRecursive(stairs - 1) +
-    StairCaseCombinationRecursive(stairs - 2)
-  );
+    if (stairs <= 0) return 0;
+    if (stairs === 1) return 1;
+    if (stairs === 2) return 2;
+    return (
+        StairCaseCombinationRecursive(stairs - 1) +
+        StairCaseCombinationRecursive(stairs - 2)
+    );
 }
 
 // This method of solving the problem uses dynamic programming. Its
@@ -42,16 +42,16 @@ export function StairCaseCombinationRecursive(stairs: num): num {
 const dict: Map<num, num> = new Map();
 
 export default function StairCaseCombinationDP(stairs: num): num {
-  if (stairs <= 0) return 0;
-  if (stairs === 1) return 1;
-  if (stairs === 2) return 2;
+    if (stairs <= 0) return 0;
+    if (stairs === 1) return 1;
+    if (stairs === 2) return 2;
 
-  if (dict.has(stairs)) return dict.get(stairs);
+    if (dict.has(stairs)) return dict.get(stairs);
 
-  const res =
-    StairCaseCombinationDP(stairs - 1) + StairCaseCombinationDP(stairs - 2);
+    const res =
+        StairCaseCombinationDP(stairs - 1) + StairCaseCombinationDP(stairs - 2);
 
-  dict.set(stairs, res);
+    dict.set(stairs, res);
 
-  return res;
+    return res;
 }

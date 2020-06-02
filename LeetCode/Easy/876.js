@@ -12,18 +12,18 @@
  * @return {ListNode}
  */
 export default function middleNode(head) {
-  if (!head) return null;
-  let next = head;
-  let nextNext = head;
+    if (!head) return null;
+    let next = head;
+    let nextNext = head;
 
-  while (next.next && nextNext && nextNext.next && nextNext.next.next) {
-    next = next.next;
-    nextNext = nextNext.next.next;
-  }
+    while (next.next && nextNext && nextNext.next && nextNext.next.next) {
+        next = next.next;
+        nextNext = nextNext.next.next;
+    }
 
-  if (nextNext.next) {
-    return next.next;
-  }
+    if (nextNext.next) {
+        return next.next;
+    }
 
-  return next;
+    return next;
 }

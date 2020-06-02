@@ -13,12 +13,12 @@
  * @return {string}
  */
 export default function reverseWords(s) {
-  return s
-    .split(' ')
-    .map(e =>
-      Array.from(e)
-        .reverse()
-        .join('')
-    )
-    .join(' ');
+    return s
+        .split(' ')
+        .map(e =>
+            Array.from(e)
+                .reverse()
+                .join('')
+        )
+        .join(' ');
 }

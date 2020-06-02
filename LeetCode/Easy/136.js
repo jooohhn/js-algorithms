@@ -9,18 +9,18 @@ const set = new Set();
  * @complexity: O(n)
  */
 export function SingleNumberSlow(nums: number[]): number {
-  for (let i = 0; i < nums.length; i++) {
-    if (set.has(nums[i])) {
-      set.delete(nums[i]);
-    } else {
-      set.add(nums[i]);
+    for (let i = 0; i < nums.length; i++) {
+        if (set.has(nums[i])) {
+            set.delete(nums[i]);
+        } else {
+            set.add(nums[i]);
+        }
     }
-  }
 
-  const item = Array.from(set)[0];
-  set.clear();
+    const item = Array.from(set)[0];
+    set.clear();
 
-  return item;
+    return item;
 }
 
 /**
@@ -31,9 +31,9 @@ export function SingleNumberSlow(nums: number[]): number {
  * @space O(1)
  */
 export default function SingleNumber(nums) {
-  let res = 0;
-  for (const item of nums) {
-    res ^= item;
-  }
-  return res;
+    let res = 0;
+    for (const item of nums) {
+        res ^= item;
+    }
+    return res;
 }

@@ -32,23 +32,23 @@
  * @return {ListNode}
  */
 export default function rotateRight(head, k) {
-  let len = 0;
-  let curr = head;
-  let tail = curr;
-  while (curr !== null) {
-    tail = curr;
-    curr = curr.next;
-    len++;
-  }
-  k %= len;
-  if (len <= 1 || k === 0) return head;
-  curr = head;
-  for (let i = 0; i < len - k - 1; i++) {
-    curr = curr.next;
-  }
-  const nextHead = curr.next;
-  tail.next = head;
-  head = nextHead;
-  curr.next = null;
-  return head;
+    let len = 0;
+    let curr = head;
+    let tail = curr;
+    while (curr !== null) {
+        tail = curr;
+        curr = curr.next;
+        len++;
+    }
+    k %= len;
+    if (len <= 1 || k === 0) return head;
+    curr = head;
+    for (let i = 0; i < len - k - 1; i++) {
+        curr = curr.next;
+    }
+    const nextHead = curr.next;
+    tail.next = head;
+    head = nextHead;
+    curr.next = null;
+    return head;
 }

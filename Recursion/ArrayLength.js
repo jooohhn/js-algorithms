@@ -13,12 +13,12 @@
  * @flow
  */
 export default function ArrayLength(array: number[]): number {
-  switch (array.length !== 0) {
-    case true: {
-      array.splice(0, 1);
-      return 1 + ArrayLength(array);
+    switch (array.length !== 0) {
+        case true: {
+            array.splice(0, 1);
+            return 1 + ArrayLength(array);
+        }
+        default:
+            return 0;
     }
-    default:
-      return 0;
-  }
 }

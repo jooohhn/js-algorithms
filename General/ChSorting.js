@@ -13,32 +13,32 @@
 // neither are 'ch'
 
 function isCh(word, i) {
-  return i + 1 < word.length && word[i] === 'c' && word[i + 1] === 'h';
+    return i + 1 < word.length && word[i] === 'c' && word[i + 1] === 'h';
 }
 
 function compareTwoWords(a, b) {
-  for (let i = 0, j = 0; i < a.length && j < b.length; i++, j++) {
-    const aIsCh = isCh(a, i);
-    const bIsCh = isCh(b, j);
-    if (aIsCh || bIsCh) {
-      if (aIsCh && bIsCh) {
-        i++;
-        j++;
-        continue;
-      }
-      if (aIsCh) return b[j] <= 'h' ? 1 : -1;
-      return a[i] <= 'h' ? -1 : 1;
+    for (let i = 0, j = 0; i < a.length && j < b.length; i++, j++) {
+        const aIsCh = isCh(a, i);
+        const bIsCh = isCh(b, j);
+        if (aIsCh || bIsCh) {
+            if (aIsCh && bIsCh) {
+                i++;
+                j++;
+                continue;
+            }
+            if (aIsCh) return b[j] <= 'h' ? 1 : -1;
+            return a[i] <= 'h' ? -1 : 1;
+        }
+        if (a[i] === b[i]) {
+            continue;
+        }
+        return a[i] < b[j] ? 1 : -1;
     }
-    if (a[i] === b[i]) {
-      continue;
-    }
-    return a[i] < b[j] ? 1 : -1;
-  }
-  return 0;
+    return 0;
 }
 
 export default function sortWords(words) {
-  return words.sort(compareTwoWords);
+    return words.sort(compareTwoWords);
 }
 
 // Test:

@@ -32,32 +32,32 @@
  * @return {boolean}
  */
 export default function isValid(s) {
-  const stack = [];
-  const map = new Map([
-    [')', '('],
-    ['}', '{'],
-    [']', '[']
-  ]);
-  const closing = new Set([')', '}', ']']);
-  for (let i = 0; i < s.length; i++) {
-    if (stack.length) {
-      const top = stack[stack.length - 1];
-      // if s[i] is closing, must match
-      if (closing.has(s[i])) {
-        // if matches top of stack, pop stack
-        if (map.get(s[i]) === top) {
-          stack.pop();
+    const stack = [];
+    const map = new Map([
+        [')', '('],
+        ['}', '{'],
+        [']', '[']
+    ]);
+    const closing = new Set([')', '}', ']']);
+    for (let i = 0; i < s.length; i++) {
+        if (stack.length) {
+            const top = stack[stack.length - 1];
+            // if s[i] is closing, must match
+            if (closing.has(s[i])) {
+                // if matches top of stack, pop stack
+                if (map.get(s[i]) === top) {
+                    stack.pop();
+                } else {
+                    return false;
+                }
+            } else {
+                stack.push(s[i]);
+            }
+        } else if (stack.length === 0 && closing.has(s[i])) {
+            return false;
         } else {
-          return false;
+            stack.push(s[i]);
         }
-      } else {
-        stack.push(s[i]);
-      }
-    } else if (stack.length === 0 && closing.has(s[i])) {
-      return false;
-    } else {
-      stack.push(s[i]);
     }
-  }
-  return stack.length === 0;
+    return stack.length === 0;
 }

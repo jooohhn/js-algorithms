@@ -20,18 +20,18 @@
 // [0, 1, 2, 3, 4];
 
 function swap(array, from, to) {
-  const tmp = array[from];
-  array[from] = array[to];
-  array[to] = tmp;
+    const tmp = array[from];
+    array[from] = array[to];
+    array[to] = tmp;
 }
 
 function reorderArray(A, B) {
-  for (let i = 0; i < A.length; i++) {
-    const to = B[i];
-    swap(A, i, to);
-    swap(B, i, to);
-  }
-  return A;
+    for (let i = 0; i < A.length; i++) {
+        const to = B[i];
+        swap(A, i, to);
+        swap(B, i, to);
+    }
+    return A;
 }
 
 const A = ['C', 'D', 'E', 'F', 'G'];

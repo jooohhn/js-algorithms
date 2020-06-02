@@ -8,18 +8,18 @@ import randomNumber from '../Math/RandomNumber';
  * Generate a random string
  */
 export default function RandomString(stringLength: number): string {
-  const dictionary =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const dictionary =
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-  let generatedRandomString = '';
-  let index;
+    let generatedRandomString = '';
+    let index;
 
-  for (index = 0; index < stringLength; index++) {
-    const randomDictionaryIndex = Math.floor(
-      randomNumber(0, dictionary.length)
-    );
-    generatedRandomString += dictionary[randomDictionaryIndex];
-  }
+    for (index = 0; index < stringLength; index++) {
+        const randomDictionaryIndex = Math.floor(
+            randomNumber(0, dictionary.length)
+        );
+        generatedRandomString += dictionary[randomDictionaryIndex];
+    }
 
-  return generatedRandomString;
+    return generatedRandomString;
 }

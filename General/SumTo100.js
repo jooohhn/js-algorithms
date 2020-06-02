@@ -18,22 +18,22 @@
 // -1+2-3+4+5+6+78+9
 
 function sumTo100Aux(n, digits, i, sumSoFar, res) {
-  if (digits.length === 9) {
-    const a = digits.join('');
-    if (Number(a) === n) {
-      res.push(a);
+    if (digits.length === 9) {
+        const a = digits.join('');
+        if (Number(a) === n) {
+            res.push(a);
+        }
+        return;
     }
-    return;
-  }
-  sumTo100Aux(n, [...digits, `-${i}`], i + 1, sumSoFar, res);
-  sumTo100Aux(n, [...digits, i], i + 1, sumSoFar, res);
-  sumTo100Aux(n, [...digits, `+${i}`], i + 1, sumSoFar, res);
+    sumTo100Aux(n, [...digits, `-${i}`], i + 1, sumSoFar, res);
+    sumTo100Aux(n, [...digits, i], i + 1, sumSoFar, res);
+    sumTo100Aux(n, [...digits, `+${i}`], i + 1, sumSoFar, res);
 }
 
 export default function sumTo100(n) {
-  const res = [];
-  sumTo100Aux(n, [], 1, 0, res);
-  return res;
+    const res = [];
+    sumTo100Aux(n, [], 1, 0, res);
+    return res;
 }
 
 console.log(sumTo100(100));

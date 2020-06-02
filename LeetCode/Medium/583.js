@@ -21,24 +21,30 @@
  * Longest common subsequence
  */
 const LCS = (a, b, n, m, mat) => {
-  if (n < 0 || m < 0) return 0;
-  if (mat[n][m] !== undefined) return mat[n][m];
+    if (n < 0 || m < 0) return 0;
+    if (mat[n][m] !== undefined) return mat[n][m];
 
-  let res;
-  if (a[n] === b[m]) {
-    res = 1 + LCS(a, b, n - 1, m - 1, mat);
-  } else {
-    res = Math.max(LCS(a, b, n - 1, m, mat), LCS(a, b, n, m - 1, mat));
-  }
+    let res;
+    if (a[n] === b[m]) {
+        res = 1 + LCS(a, b, n - 1, m - 1, mat);
+    } else {
+        res = Math.max(LCS(a, b, n - 1, m, mat), LCS(a, b, n, m - 1, mat));
+    }
 
-  mat[n][m] = res;
+    mat[n][m] = res;
 
-  return res;
+    return res;
 };
 
 export default function minDistance(word1, word2) {
-  // Initialize DP table
-  const mat = Array.from(Array(word1.length), () => new Array(word2.length));
-  const lcsLength = LCS(word1, word2, word1.length - 1, word2.length - 1, mat);
-  return word1.length - lcsLength + word2.length - lcsLength;
+    // Initialize DP table
+    const mat = Array.from(Array(word1.length), () => new Array(word2.length));
+    const lcsLength = LCS(
+        word1,
+        word2,
+        word1.length - 1,
+        word2.length - 1,
+        mat
+    );
+    return word1.length - lcsLength + word2.length - lcsLength;
 }

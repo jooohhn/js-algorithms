@@ -18,15 +18,15 @@
  * @return {boolean}
  */
 export default function hasCycle(head) {
-  const set = new Set();
-  let curr = head;
-  set.add(curr);
-  while (curr) {
-    if (set.has(curr.next)) {
-      return true;
+    const set = new Set();
+    let curr = head;
+    set.add(curr);
+    while (curr) {
+        if (set.has(curr.next)) {
+            return true;
+        }
+        set.add(curr.next);
+        curr = curr.next;
     }
-    set.add(curr.next);
-    curr = curr.next;
-  }
-  return false;
+    return false;
 }

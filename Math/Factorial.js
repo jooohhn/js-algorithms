@@ -15,22 +15,22 @@
 type num = number;
 
 export default function FactorialRecursive(number: num, product: num = 1): num {
-  switch (number) {
-    case 1:
-      return product;
-    default:
-      return FactorialRecursive(number - 1, product * number);
-  }
+    switch (number) {
+        case 1:
+            return product;
+        default:
+            return FactorialRecursive(number - 1, product * number);
+    }
 }
 
 export function FactorialIterative(number: num): num {
-  let factorial = 1;
-  let current = 1;
+    let factorial = 1;
+    let current = 1;
 
-  while (current < number) {
-    current++;
-    factorial *= current;
-  }
+    while (current < number) {
+        current++;
+        factorial *= current;
+    }
 
-  return factorial;
+    return factorial;
 }

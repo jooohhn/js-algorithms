@@ -46,51 +46,51 @@
  * Initialize your data structure here.
  */
 export default class RandomizedSet {
-  constructor() {
-    this.set = new Set();
-    this.mappings = new Map();
-    this.randomArray = [];
-    this.last = -1;
-  }
+    constructor() {
+        this.set = new Set();
+        this.mappings = new Map();
+        this.randomArray = [];
+        this.last = -1;
+    }
 
-  /**
-   * Inserts a value to the set. Returns true if the set did not already contain the specified element.
-   * @param {number} val
-   * @return {boolean}
-   */
-  insert(val) {
-    if (this.set.has(val)) return false;
-    this.set.add(val);
-    this.last++;
-    this.randomArray[this.last] = val;
-    this.mappings.set(val, this.last);
-    return true;
-  }
+    /**
+     * Inserts a value to the set. Returns true if the set did not already contain the specified element.
+     * @param {number} val
+     * @return {boolean}
+     */
+    insert(val) {
+        if (this.set.has(val)) return false;
+        this.set.add(val);
+        this.last++;
+        this.randomArray[this.last] = val;
+        this.mappings.set(val, this.last);
+        return true;
+    }
 
-  /**
-   * Removes a value from the set. Returns true if the set contained the specified element.
-   * @param {number} val
-   * @return {boolean}
-   */
-  remove(val) {
-    if (!this.set.has(val)) return false;
-    this.set.delete(val);
-    const itemIndex = this.mappings.get(val);
-    const last = this.randomArray[this.last];
-    this.randomArray[this.last] = undefined;
-    this.randomArray[itemIndex] = last;
-    this.mappings.set(last, itemIndex);
-    this.mappings.delete(val);
-    this.last--;
-    return true;
-  }
+    /**
+     * Removes a value from the set. Returns true if the set contained the specified element.
+     * @param {number} val
+     * @return {boolean}
+     */
+    remove(val) {
+        if (!this.set.has(val)) return false;
+        this.set.delete(val);
+        const itemIndex = this.mappings.get(val);
+        const last = this.randomArray[this.last];
+        this.randomArray[this.last] = undefined;
+        this.randomArray[itemIndex] = last;
+        this.mappings.set(last, itemIndex);
+        this.mappings.delete(val);
+        this.last--;
+        return true;
+    }
 
-  /**
-   * Get a random element from the set.
-   * @return {number}
-   */
-  getRandom() {
-    const index = Math.floor(Math.random() * (this.last + 1));
-    return this.randomArray[index];
-  }
+    /**
+     * Get a random element from the set.
+     * @return {number}
+     */
+    getRandom() {
+        const index = Math.floor(Math.random() * (this.last + 1));
+        return this.randomArray[index];
+    }
 }

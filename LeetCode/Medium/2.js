@@ -21,25 +21,25 @@
 import { ListNode } from '../globals';
 
 export default function addTwoNumbers(l1, l2) {
-  let carry = false;
-  let ans;
-  let prev;
-  while (l1 || l2 || carry) {
-    const val1 = (l1 && l1.val) || 0;
-    const val2 = (l2 && l2.val) || 0;
-    let sum = val1 + val2;
-    if (carry) sum++;
-    carry = sum > 9;
-    const mod = sum % 10;
-    if (ans) {
-      prev.next = new ListNode(mod);
-      prev = prev.next;
-    } else {
-      ans = new ListNode(mod);
-      prev = ans;
+    let carry = false;
+    let ans;
+    let prev;
+    while (l1 || l2 || carry) {
+        const val1 = (l1 && l1.val) || 0;
+        const val2 = (l2 && l2.val) || 0;
+        let sum = val1 + val2;
+        if (carry) sum++;
+        carry = sum > 9;
+        const mod = sum % 10;
+        if (ans) {
+            prev.next = new ListNode(mod);
+            prev = prev.next;
+        } else {
+            ans = new ListNode(mod);
+            prev = ans;
+        }
+        if (l1) l1 = l1.next;
+        if (l2) l2 = l2.next;
     }
-    if (l1) l1 = l1.next;
-    if (l2) l2 = l2.next;
-  }
-  return ans;
+    return ans;
 }

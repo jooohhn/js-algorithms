@@ -18,6 +18,6 @@
  * @flow
  */
 export default function HasDupeChars(string: string): boolean {
-  const set = new Set(string);
-  return set.size !== string.length;
+    const set = new Set(string);
+    return set.size !== string.length;
 }

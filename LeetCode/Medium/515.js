@@ -10,17 +10,17 @@
  * }
  */
 const largestValuesAux = (root, depth, map) => {
-  // DFS
-  if (!root) return;
-  if (Number.isInteger(map[depth])) {
-    if (map[depth] < root.val) {
-      map[depth] = root.val;
+    // DFS
+    if (!root) return;
+    if (Number.isInteger(map[depth])) {
+        if (map[depth] < root.val) {
+            map[depth] = root.val;
+        }
+    } else {
+        map[depth] = root.val;
     }
-  } else {
-    map[depth] = root.val;
-  }
-  if (root.left) largestValuesAux(root.left, depth + 1, map);
-  if (root.right) largestValuesAux(root.right, depth + 1, map);
+    if (root.left) largestValuesAux(root.left, depth + 1, map);
+    if (root.right) largestValuesAux(root.right, depth + 1, map);
 };
 
 /**
@@ -28,7 +28,7 @@ const largestValuesAux = (root, depth, map) => {
  * @return {number[]}
  */
 export default function largestValues(root) {
-  const map = [];
-  largestValuesAux(root, 0, map);
-  return map;
+    const map = [];
+    largestValuesAux(root, 0, map);
+    return map;
 }

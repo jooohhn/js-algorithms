@@ -15,13 +15,13 @@
  */
 
 const minDepthAux = (root, depth) => {
-  if (!root) return Infinity;
-  if (!root.left && !root.right) {
-    return depth + 1;
-  }
-  const left = minDepthAux(root.left, depth + 1);
-  const right = minDepthAux(root.right, depth + 1);
-  return Math.min(left, right);
+    if (!root) return Infinity;
+    if (!root.left && !root.right) {
+        return depth + 1;
+    }
+    const left = minDepthAux(root.left, depth + 1);
+    const right = minDepthAux(root.right, depth + 1);
+    return Math.min(left, right);
 };
 
 /**
@@ -29,6 +29,6 @@ const minDepthAux = (root, depth) => {
  * @return {number}
  */
 export default function minDepth(root) {
-  if (!root) return 0;
-  return minDepthAux(root, 0);
+    if (!root) return 0;
+    return minDepthAux(root, 0);
 }

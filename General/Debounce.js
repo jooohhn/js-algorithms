@@ -4,9 +4,9 @@
 // call, the function will not call the original function until two seconds after the last (tenth) call.
 
 export default function debounce(func, delay) {
-  let inDebounce;
-  return function debouncedFn(...args) {
-    clearTimeout(inDebounce);
-    inDebounce = setTimeout(() => func(...args), delay);
-  };
+    let inDebounce;
+    return function debouncedFn(...args) {
+        clearTimeout(inDebounce);
+        inDebounce = setTimeout(() => func(...args), delay);
+    };
 }

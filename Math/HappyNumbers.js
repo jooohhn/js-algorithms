@@ -24,39 +24,39 @@
  * Calculate if a number is happy or unhappy
  */
 export default function HappyNumbers(number: number): boolean {
-  const numbers = new Set();
-  let currentNumber = calc(number);
-  let infiniteLoopPreventionLimit = 0;
+    const numbers = new Set();
+    let currentNumber = calc(number);
+    let infiniteLoopPreventionLimit = 0;
 
-  while (!numbers.has(1) && infiniteLoopPreventionLimit < 1000) {
-    currentNumber = calc(currentNumber);
+    while (!numbers.has(1) && infiniteLoopPreventionLimit < 1000) {
+        currentNumber = calc(currentNumber);
 
-    if (numbers.has(currentNumber)) {
-      return false;
+        if (numbers.has(currentNumber)) {
+            return false;
+        }
+
+        numbers.add(currentNumber);
+        infiniteLoopPreventionLimit++;
+
+        if (currentNumber === 1) {
+            return true;
+        }
     }
 
-    numbers.add(currentNumber);
-    infiniteLoopPreventionLimit++;
-
-    if (currentNumber === 1) {
-      return true;
-    }
-  }
-
-  return false;
+    return false;
 }
 
 export function calc(number: number): number {
-  const castedNumber = number.toString();
+    const castedNumber = number.toString();
 
-  let index;
-  let sum = 0;
+    let index;
+    let sum = 0;
 
-  for (index = 0; index < castedNumber.length; index++) {
-    const int = parseInt(castedNumber[index], 10);
-    const result = int * int;
-    sum += result;
-  }
+    for (index = 0; index < castedNumber.length; index++) {
+        const int = parseInt(castedNumber[index], 10);
+        const result = int * int;
+        sum += result;
+    }
 
-  return sum;
+    return sum;
 }

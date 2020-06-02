@@ -14,15 +14,15 @@
  * @return {string}
  */
 export default function addStrings(num1, num2) {
-  let carry = false;
-  const str = [];
-  for (let i = 0; i < Math.max(num1.length, num2.length) || carry; i++) {
-    const a = i < num1.length ? num1[num1.length - 1 - i] : 0;
-    const b = i < num2.length ? num2[num2.length - 1 - i] : 0;
-    let sum = parseInt(a, 10) + parseInt(b, 10) + (carry === true ? 1 : 0);
-    carry = sum > 9;
-    sum %= 10;
-    str.push(sum);
-  }
-  return str.reverse().join('');
+    let carry = false;
+    const str = [];
+    for (let i = 0; i < Math.max(num1.length, num2.length) || carry; i++) {
+        const a = i < num1.length ? num1[num1.length - 1 - i] : 0;
+        const b = i < num2.length ? num2[num2.length - 1 - i] : 0;
+        let sum = parseInt(a, 10) + parseInt(b, 10) + (carry === true ? 1 : 0);
+        carry = sum > 9;
+        sum %= 10;
+        str.push(sum);
+    }
+    return str.reverse().join('');
 }

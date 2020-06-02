@@ -8,74 +8,72 @@
  */
 
 function example(willSucceed, callback) {
-  setTimeout(() => {
-    if (willSucceed) {
-      callback(null, 'foo');
-    } else {
-      callback(new Error('oh noes'));
-    }
-  }, 100);
+    setTimeout(() => {
+        if (willSucceed) {
+            callback(null, 'foo');
+        } else {
+            callback(new Error('oh noes'));
+        }
+    }, 100);
 }
 
 class MyPromise {
-  err = null;
+    err = null;
 
-  value = null;
+    value = null;
 
-  queue = [];
+    queue = [];
 
-  constructor(fn) {
-    const resolve = val => {
-      this.val = val;
-      if (this.queue.length) {
-        const [success] = this.queue.shift();
-        success(this.val);
-      }
-    };
-    const reject = err => {
-      const failure = this.queue.shift()[1];
-      failure(err);
-    };
-    fn(resolve, reject);
-  }
+    constructor(fn) {
+        const resolve = val => {
+            this.val = val;
+            if (this.queue.length) {
+                const [success] = this.queue.shift();
+                success(this.val);
+            }
+        };
+        const reject = err => {
+            const failure = this.queue.shift()[1];
+            failure(err);
+        };
+        fn(resolve, reject);
+    }
 
-  then(success, failure) {
-    this.queue.push([success, failure]);
-  }
+    then(success, failure) {
+        this.queue.push([success, failure]);
+    }
 }
 
 export const race = (...promises) =>
-  new Promise((resolve, reject) => {
-    promises.forEach(p => p.then(resolve).catch(reject));
-  });
+    new Promise((resolve, reject) => {
+        promises.forEach(p => p.then(resolve).catch(reject));
+    });
 
 export const all = (...promises) => {
-  const results = [];
+    const results = [];
 
-  const merged = promises.reduce(
-    (acc, p) => acc.then(() => p).then(r => results.push(r)),
-    Promise.resolve(null)
-  );
+    const merged = promises.reduce(
+        (acc, p) => acc.then(() => p).then(r => results.push(r)),
+        Promise.resolve(null)
+    );
 
-  return merged.then(() => results);
+    return merged.then(() => results);
 };
 
 // tests
 const foo = new MyPromise(resolve => {
-  example(true, (error, data) => {
-    resolve(data);
-  });
+    example(true, (error, data) => {
+        resolve(data);
+    });
 });
 foo.then(data => console.log(data)).catch(console.log);
 
 const bar = new MyPromise((resolve, reject) => {
-  example(false, error => {
-    reject(error);
-  });
+    example(false, error => {
+        reject(error);
+    });
 });
-bar
-  .then(
+bar.then(
     data => console.log(data),
     () => console.log('failure')
-  )
-  .catch(console.log);
+).catch(console.log);

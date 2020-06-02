@@ -5,14 +5,14 @@
 // You may assume all the characters consist of printable ascii characters.
 
 const reverseStringAux = (s, n, m) => {
-  if (m === n || s.length === 0 || n > m) return s;
-  // swap first and last, in place
-  const a = s[n];
-  const b = s[m];
-  s[n] = b;
-  s[m] = a;
-  reverseStringAux(s, n + 1, m - 1);
-  return s;
+    if (m === n || s.length === 0 || n > m) return s;
+    // swap first and last, in place
+    const a = s[n];
+    const b = s[m];
+    s[n] = b;
+    s[m] = a;
+    reverseStringAux(s, n + 1, m - 1);
+    return s;
 };
 
 /**
@@ -20,5 +20,5 @@ const reverseStringAux = (s, n, m) => {
  * @return {void} Do not return anything, modify s in-place instead.
  */
 export default function reverseString(s) {
-  return reverseStringAux(s, 0, s.length - 1);
+    return reverseStringAux(s, 0, s.length - 1);
 }

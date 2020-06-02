@@ -20,25 +20,25 @@
  * @return {ListNode}
  */
 export default function mergeTwoLists(l1, l2) {
-  if (!l1) return l2;
-  if (!l2) return l1;
-  let head = l1.val < l2.val ? l1 : l2;
-  const first = head;
-  let other = l1.val < l2.val ? l2 : l1;
+    if (!l1) return l2;
+    if (!l2) return l1;
+    let head = l1.val < l2.val ? l1 : l2;
+    const first = head;
+    let other = l1.val < l2.val ? l2 : l1;
 
-  while (head && other) {
-    if (!head.next) {
-      head.next = other;
-      break;
-    } else if (head.next.val <= other.val) {
-      head = head.next;
-    } else {
-      const dummy = head.next;
-      head.next = other;
-      other = dummy;
-      head = head.next;
+    while (head && other) {
+        if (!head.next) {
+            head.next = other;
+            break;
+        } else if (head.next.val <= other.val) {
+            head = head.next;
+        } else {
+            const dummy = head.next;
+            head.next = other;
+            other = dummy;
+            head = head.next;
+        }
     }
-  }
 
-  return first;
+    return first;
 }

@@ -9,10 +9,10 @@ type num = number;
  * Return a random number between a min and max
  */
 export default function RandomBetween(min: num, max: num): num {
-  return Math.random() * (max - min) + min;
+    return Math.random() * (max - min) + min;
 }
 
 // Assert randomBetween
 export function isBeween(number: num, min: num, max: num): boolean {
-  return number > min && number < max;
+    return number > min && number < max;
 }

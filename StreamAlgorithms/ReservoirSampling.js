@@ -12,19 +12,19 @@
  * @param {LinkedList<number>} list The list which we are taking the random samples of
  */
 export default function ReservoirSampling(k, list) {
-  // Add the first k items of the list to the reservoir
-  const reservoir = [];
-  for (let i = 0; i < k; i++) {
-    reservoir.push(list.val);
-    list = list.next;
-  }
-  while (list.hasNext()) {
-    const j = Math.floor(k * Math.random());
-    if (j < k) {
-      const randReservoirIndex = reservoir[j];
-      reservoir[randReservoirIndex] = list.val;
+    // Add the first k items of the list to the reservoir
+    const reservoir = [];
+    for (let i = 0; i < k; i++) {
+        reservoir.push(list.val);
+        list = list.next;
     }
-    list = list.next;
-  }
-  return reservoir;
+    while (list.hasNext()) {
+        const j = Math.floor(k * Math.random());
+        if (j < k) {
+            const randReservoirIndex = reservoir[j];
+            reservoir[randReservoirIndex] = list.val;
+        }
+        list = list.next;
+    }
+    return reservoir;
 }

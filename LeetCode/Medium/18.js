@@ -8,30 +8,38 @@
 // The solution set must not contain duplicate quadruplets.
 
 function fourSumAux(arr, s, i, sum, sumSoFar, ans, set) {
-  if (sumSoFar.length === 4 && sum === s) {
-    const hash = sumSoFar.join('-');
-    if (set.has(hash)) return;
-    set.add(hash);
-    ans.push(sumSoFar);
-    return;
-  }
-  if (i >= arr.length || sumSoFar.length >= 4) return;
-  for (; i < arr.length; i++) {
-    fourSumAux(arr, s, i + 1, sum + arr[i], [...sumSoFar, arr[i]], ans, set);
-  }
+    if (sumSoFar.length === 4 && sum === s) {
+        const hash = sumSoFar.join('-');
+        if (set.has(hash)) return;
+        set.add(hash);
+        ans.push(sumSoFar);
+        return;
+    }
+    if (i >= arr.length || sumSoFar.length >= 4) return;
+    for (; i < arr.length; i++) {
+        fourSumAux(
+            arr,
+            s,
+            i + 1,
+            sum + arr[i],
+            [...sumSoFar, arr[i]],
+            ans,
+            set
+        );
+    }
 }
 
 export default function fourSum(arr, s) {
-  const ans = [];
-  const set = new Set();
-  fourSumAux(
-    arr.sort((a, b) => a - b),
-    s,
-    0,
-    0,
-    [],
-    ans,
-    set
-  );
-  return ans;
+    const ans = [];
+    const set = new Set();
+    fourSumAux(
+        arr.sort((a, b) => a - b),
+        s,
+        0,
+        0,
+        [],
+        ans,
+        set
+    );
+    return ans;
 }

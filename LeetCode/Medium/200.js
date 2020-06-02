@@ -22,24 +22,24 @@
 // Output: 3
 
 function sink(grid, i, j) {
-  if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length) {
-    return 0;
-  }
-  if (grid[i][j] === '0') return 0;
-  grid[i][j] = '0';
-  sink(grid, i + 1, j);
-  sink(grid, i - 1, j);
-  sink(grid, i, j + 1);
-  sink(grid, i, j - 1);
-  return 1;
+    if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length) {
+        return 0;
+    }
+    if (grid[i][j] === '0') return 0;
+    grid[i][j] = '0';
+    sink(grid, i + 1, j);
+    sink(grid, i - 1, j);
+    sink(grid, i, j + 1);
+    sink(grid, i, j - 1);
+    return 1;
 }
 
 export default function numIslands(grid) {
-  let count = 0;
-  for (let i = 0; i < grid.length; i++) {
-    for (let j = 0; j < grid[i].length; j++) {
-      count += sink(grid, i, j);
+    let count = 0;
+    for (let i = 0; i < grid.length; i++) {
+        for (let j = 0; j < grid[i].length; j++) {
+            count += sink(grid, i, j);
+        }
     }
-  }
-  return count;
+    return count;
 }

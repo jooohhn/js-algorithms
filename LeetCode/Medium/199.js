@@ -27,32 +27,32 @@
  */
 
 const getDepth = (node, depth, map) => {
-  if (!node) return;
-  map.set(node, depth);
-  if (node.left) getDepth(node.left, depth + 1, map);
-  if (node.right) getDepth(node.right, depth + 1, map);
+    if (!node) return;
+    map.set(node, depth);
+    if (node.left) getDepth(node.left, depth + 1, map);
+    if (node.right) getDepth(node.right, depth + 1, map);
 };
 
 export default function rightSideView(root) {
-  // BFS from right to left
-  const queue = [];
-  const map = new Map();
-  getDepth(root, 0, map);
-  const ans = [];
-  if (!root) return [];
-  const set = new Set();
+    // BFS from right to left
+    const queue = [];
+    const map = new Map();
+    getDepth(root, 0, map);
+    const ans = [];
+    if (!root) return [];
+    const set = new Set();
 
-  queue.push(root);
-  while (queue.length) {
-    const item = queue.shift();
-    if (map.has(item)) {
-      if (item.right) queue.push(item.right);
-      if (item.left) queue.push(item.left);
-      if (!set.has(map.get(item))) {
-        ans.push(item.val);
-        set.add(map.get(item));
-      }
+    queue.push(root);
+    while (queue.length) {
+        const item = queue.shift();
+        if (map.has(item)) {
+            if (item.right) queue.push(item.right);
+            if (item.left) queue.push(item.left);
+            if (!set.has(map.get(item))) {
+                ans.push(item.val);
+                set.add(map.get(item));
+            }
+        }
     }
-  }
-  return ans;
+    return ans;
 }

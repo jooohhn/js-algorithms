@@ -20,29 +20,29 @@
  * @return {ListNode}
  */
 export function reverseList(head) {
-  let curr = head;
-  let prev = null;
-  while (curr) {
-    const { next } = curr;
-    curr.next = prev;
-    prev = curr;
-    curr = next;
-  }
-  return prev;
+    let curr = head;
+    let prev = null;
+    while (curr) {
+        const { next } = curr;
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+    }
+    return prev;
 }
 
 export default function reverseListRecursive(head) {
-  // head.next === null recursion-Base
-  if (head === null) {
-    return null;
-  }
-  if (head.next === null) {
-    return head;
-  }
-  const newHead = reverseListRecursive(head.next);
-  // reverse linked list
-  head.next.next = head;
-  // disconnect the original connection
-  head.next = null;
-  return newHead;
+    // head.next === null recursion-Base
+    if (head === null) {
+        return null;
+    }
+    if (head.next === null) {
+        return head;
+    }
+    const newHead = reverseListRecursive(head.next);
+    // reverse linked list
+    head.next.next = head;
+    // disconnect the original connection
+    head.next = null;
+    return newHead;
 }

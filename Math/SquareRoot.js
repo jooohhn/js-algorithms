@@ -23,22 +23,22 @@ type num = number;
  * @complexity: O(log(n))
  */
 export default function SquareRoot(number: num): num {
-  let sqrt = 1;
-  let head = 1;
-  let tail = number;
+    let sqrt = 1;
+    let head = 1;
+    let tail = number;
 
-  while (sqrt ** 2 !== number) {
-    const middle = Math.floor((tail + head) / 2);
-    sqrt = middle;
+    while (sqrt ** 2 !== number) {
+        const middle = Math.floor((tail + head) / 2);
+        sqrt = middle;
 
-    if (sqrt ** 2 > number) {
-      tail = middle;
-    } else {
-      head = middle;
+        if (sqrt ** 2 > number) {
+            tail = middle;
+        } else {
+            head = middle;
+        }
     }
-  }
 
-  return sqrt;
+    return sqrt;
 }
 
 // @TODO: Taylor Series Method

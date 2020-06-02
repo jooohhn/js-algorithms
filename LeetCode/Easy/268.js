@@ -22,15 +22,15 @@
  * @return {number}
  */
 export default function missingNumber(nums) {
-  if (nums.length === 1) {
-    return nums[0] === 0 ? 1 : 0;
-  }
-  const max = nums.length;
-  const sum =
-    max % 2 === 0 ? (max * (max + 1)) / 2 : max + (max * (max - 1)) / 2;
-  let iterSum = 0;
-  for (const i of nums) {
-    iterSum += i;
-  }
-  return sum - iterSum;
+    if (nums.length === 1) {
+        return nums[0] === 0 ? 1 : 0;
+    }
+    const max = nums.length;
+    const sum =
+        max % 2 === 0 ? (max * (max + 1)) / 2 : max + (max * (max - 1)) / 2;
+    let iterSum = 0;
+    for (const i of nums) {
+        iterSum += i;
+    }
+    return sum - iterSum;
 }

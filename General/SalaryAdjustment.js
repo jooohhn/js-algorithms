@@ -27,14 +27,14 @@
 // Space; O(1)
 
 export default function salaryAdjustment(salaries, budget) {
-  salaries.sort((a, b) => a - b).reverse();
-  let adj = 0;
-  let sum = salaries.reduce((p, c) => p + c, 0);
-  if (sum <= budget) return adj;
-  for (let i = 0; i < salaries.length; i++) {
-    sum -= salaries[i];
-    adj = (budget - sum) / (i + 1);
-    if (salaries[i + 1] <= adj) break;
-  }
-  return adj;
+    salaries.sort((a, b) => a - b).reverse();
+    let adj = 0;
+    let sum = salaries.reduce((p, c) => p + c, 0);
+    if (sum <= budget) return adj;
+    for (let i = 0; i < salaries.length; i++) {
+        sum -= salaries[i];
+        adj = (budget - sum) / (i + 1);
+        if (salaries[i + 1] <= adj) break;
+    }
+    return adj;
 }

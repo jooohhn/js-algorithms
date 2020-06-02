@@ -13,38 +13,38 @@
  *
  */
 class Publisher {
-  constructor() {
-    this.isEnabled = true;
-    this.events = new Set();
-  }
-
-  add(fn) {
-    this.events.add(fn);
-    return {
-      remove: () => {
-        this.remove(fn);
-      }
-    };
-  }
-
-  remove(fn) {
-    this.events.delete(fn);
-  }
-
-  enable() {
-    this.isEnabled = true;
-  }
-
-  disable() {
-    this.isEnabled = false;
-  }
-
-  fire(...args) {
-    if (!this.isEnabled) return;
-    for (const fn of this.events) {
-      fn.call(fn, args);
+    constructor() {
+        this.isEnabled = true;
+        this.events = new Set();
     }
-  }
+
+    add(fn) {
+        this.events.add(fn);
+        return {
+            remove: () => {
+                this.remove(fn);
+            }
+        };
+    }
+
+    remove(fn) {
+        this.events.delete(fn);
+    }
+
+    enable() {
+        this.isEnabled = true;
+    }
+
+    disable() {
+        this.isEnabled = false;
+    }
+
+    fire(...args) {
+        if (!this.isEnabled) return;
+        for (const fn of this.events) {
+            fn.call(fn, args);
+        }
+    }
 }
 
 const publisher = new Publisher();

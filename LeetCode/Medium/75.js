@@ -14,16 +14,16 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 export default function sortColors(nums) {
-  const counts = new Array(3);
-  for (const item of nums) {
-    counts[item] = counts[item] === undefined ? 1 : counts[item] + 1;
-  }
-  let index = 0;
-  for (let i = 0; i < counts.length; i++) {
-    for (let j = 0; j < counts[i]; j++) {
-      nums[index] = i;
-      index++;
+    const counts = new Array(3);
+    for (const item of nums) {
+        counts[item] = counts[item] === undefined ? 1 : counts[item] + 1;
     }
-  }
-  return nums;
+    let index = 0;
+    for (let i = 0; i < counts.length; i++) {
+        for (let j = 0; j < counts[i]; j++) {
+            nums[index] = i;
+            index++;
+        }
+    }
+    return nums;
 }

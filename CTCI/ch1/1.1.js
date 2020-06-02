@@ -8,15 +8,15 @@
  * @flow
  */
 export default function CheckHashAllUniqueChars(string: string): boolean {
-  const set = new Set();
+    const set = new Set();
 
-  for (const char of string) {
-    if (!set.has(char)) {
-      set.add(char);
-    } else {
-      return false;
+    for (const char of string) {
+        if (!set.has(char)) {
+            set.add(char);
+        } else {
+            return false;
+        }
     }
-  }
 
-  return true;
+    return true;
 }

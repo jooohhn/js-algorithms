@@ -18,10 +18,10 @@
  * @return {number}
  */
 export default function numJewelsInStones(J, S) {
-  const items = new Set(Array.from(J));
-  let count = 0;
-  for (const stone of Array.from(S)) {
-    if (items.has(stone)) count++;
-  }
-  return count;
+    const items = new Set(Array.from(J));
+    let count = 0;
+    for (const stone of Array.from(S)) {
+        if (items.has(stone)) count++;
+    }
+    return count;
 }

@@ -26,14 +26,14 @@
 // The value of each color in image[i][j] and newColor will be an integer in [0, 65535].
 
 const floodFillAux = (image, i, j, fromColor, newColor) => {
-  if (i < 0 || j < 0 || i >= image.length || j >= image[0].length) return;
-  if (image[i][j] !== fromColor) return;
-  if (image[i][j] === newColor) return;
-  image[i][j] = newColor;
-  floodFillAux(image, i + 1, j, fromColor, newColor);
-  floodFillAux(image, i - 1, j, fromColor, newColor);
-  floodFillAux(image, i, j + 1, fromColor, newColor);
-  floodFillAux(image, i, j - 1, fromColor, newColor);
+    if (i < 0 || j < 0 || i >= image.length || j >= image[0].length) return;
+    if (image[i][j] !== fromColor) return;
+    if (image[i][j] === newColor) return;
+    image[i][j] = newColor;
+    floodFillAux(image, i + 1, j, fromColor, newColor);
+    floodFillAux(image, i - 1, j, fromColor, newColor);
+    floodFillAux(image, i, j + 1, fromColor, newColor);
+    floodFillAux(image, i, j - 1, fromColor, newColor);
 };
 
 /**
@@ -44,6 +44,6 @@ const floodFillAux = (image, i, j, fromColor, newColor) => {
  * @return {number[][]}
  */
 export default function floodFill(image, sr, sc, newColor) {
-  floodFillAux(image, sr, sc, image[sr][sc], newColor);
-  return image;
+    floodFillAux(image, sr, sc, image[sr][sc], newColor);
+    return image;
 }

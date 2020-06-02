@@ -3,16 +3,16 @@
 const items = [];
 
 export default function DivideArray(array: number[]): number[][] {
-  switch (array.length) {
-    case 1:
-      items.push(array);
-      return items;
-    default: {
-      const middle = Math.ceil(array.length / 2);
-      const first = array.splice(middle);
-      DivideArray(first);
-      DivideArray(array);
-      return items;
+    switch (array.length) {
+        case 1:
+            items.push(array);
+            return items;
+        default: {
+            const middle = Math.ceil(array.length / 2);
+            const first = array.splice(middle);
+            DivideArray(first);
+            DivideArray(array);
+            return items;
+        }
     }
-  }
 }

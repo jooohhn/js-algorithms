@@ -17,24 +17,24 @@
  * @return {number}
  */
 export default function lengthOfLIS(nums) {
-  const dp = new Array(nums.length).fill(1);
+    const dp = new Array(nums.length).fill(1);
 
-  // current num
-  for (let i = 1; i < nums.length; i++) {
-    // nums before current num
-    let max = 0;
-    for (let j = 0; j < i; j++) {
-      if (nums[i] > nums[j]) {
-        max = Math.max(dp[j], max);
-      }
+    // current num
+    for (let i = 1; i < nums.length; i++) {
+        // nums before current num
+        let max = 0;
+        for (let j = 0; j < i; j++) {
+            if (nums[i] > nums[j]) {
+                max = Math.max(dp[j], max);
+            }
+        }
+        dp[i] = max + dp[i];
     }
-    dp[i] = max + dp[i];
-  }
 
-  let max = 0;
-  for (let i = 0; i < dp.length; i++) {
-    if (dp[i] > max) max = dp[i];
-  }
+    let max = 0;
+    for (let i = 0; i < dp.length; i++) {
+        if (dp[i] > max) max = dp[i];
+    }
 
-  return max;
+    return max;
 }

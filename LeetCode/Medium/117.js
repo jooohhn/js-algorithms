@@ -26,29 +26,29 @@
  * @return {Node}
  */
 export default function connect(root) {
-  // BFS
-  if (!root) return root;
-  const depth = new Map();
-  // For each level of tree, point
-  const queue = [];
-  queue.push(root);
-  depth.set(root, 0);
-  let prev;
-  while (queue.length) {
-    const item = queue.shift();
-    const d = depth.get(item);
-    if (prev && d === depth.get(prev)) {
-      prev.next = item;
-    } else if (prev) prev.next = null;
-    prev = item;
-    if (item.left) {
-      queue.push(item.left);
-      depth.set(item.left, d + 1);
+    // BFS
+    if (!root) return root;
+    const depth = new Map();
+    // For each level of tree, point
+    const queue = [];
+    queue.push(root);
+    depth.set(root, 0);
+    let prev;
+    while (queue.length) {
+        const item = queue.shift();
+        const d = depth.get(item);
+        if (prev && d === depth.get(prev)) {
+            prev.next = item;
+        } else if (prev) prev.next = null;
+        prev = item;
+        if (item.left) {
+            queue.push(item.left);
+            depth.set(item.left, d + 1);
+        }
+        if (item.right) {
+            queue.push(item.right);
+            depth.set(item.right, d + 1);
+        }
     }
-    if (item.right) {
-      queue.push(item.right);
-      depth.set(item.right, d + 1);
-    }
-  }
-  return root;
+    return root;
 }
