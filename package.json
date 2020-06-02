@@ -1,84 +1,87 @@
 {
-  "name": "js-algorithms",
-  "author": "Amila Welihinda",
-  "description": "A Repo of algorithms written in javascript and explained",
-  "scripts": {
-    "flow": "flow",
-    "lint": "eslint .",
-    "lint-fix": "yarn lint --fix",
-    "spec": "jest",
-    "test": "yarn lint && yarn spec"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": ["yarn lint-fix", "yarn test"],
-    "{*.json,.{babelrc,eslintrc,prettierrc,stylelintrc}}": [
-      "prettier --ignore-path .eslintignore --parser json --write"
-    ]
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.10.1",
-    "@babel/core": "^7.10.2",
-    "@babel/plugin-proposal-class-properties": "^7.10.1",
-    "@babel/preset-env": "^7.10.2",
-    "@babel/preset-flow": "^7.10.1",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-eslint": "^10.1.0",
-    "babel-jest": "^25.5.1",
-    "chai": "^4.2.0",
-    "eslint": "^6.8.0",
-    "eslint-config-bliss": "^4.7.0",
-    "eslint-plugin-flowtype-errors": "^4.3.0",
-    "eslint-plugin-prettier": "^3.1.3",
-    "flow-bin": "^0.123.0",
-    "husky": ">=4.2.5",
-    "jest-cli": "^25.5.3",
-    "lint-staged": "^10.2.2",
-    "yarn": "^1.21.0"
-  },
-  "engines": {
-    "node": ">=8",
-    "yarn": ">=1.16.0"
-  },
-  "eslintConfig": {
-    "extends": "bliss",
-    "rules": {
-      "consistent-return": "off",
-      "class-methods-use-this": "off",
-      "flowtype-errors/show-errors": "off",
-      "import/no-extraneous-dependencies": "off",
-      "max-classes-per-file": "off",
-      "no-continue": "off",
-      "no-param-reassign": "off",
-      "no-plusplus": "off",
-      "no-bitwise": "off",
-      "no-use-before-define": "off",
-      "no-underscore-dangle": "off",
-      "no-mixed-operators": "off",
-      "no-restricted-syntax": "off",
-      "jest/no-export": "off",
-      "jest/no-standalone-expect": "off"
-    }
-  },
-  "renovate": {
-    "extends": ["bliss"]
-  },
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "node": "current"
-          }
+    "name": "js-algorithms",
+    "author": "Amila Welihinda",
+    "description": "A Repo of algorithms written in javascript and explained",
+    "scripts": {
+        "flow": "flow",
+        "lint": "eslint .",
+        "lint-fix": "yarn lint --fix",
+        "spec": "jest",
+        "test": "yarn lint && yarn spec"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
         }
-      ],
-      "@babel/preset-flow"
-    ],
-    "plugins": ["@babel/plugin-proposal-class-properties"]
-  }
+    },
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx}": ["yarn lint-fix", "yarn test"],
+        "{*.json,.{babelrc,eslintrc,prettierrc,stylelintrc}}": [
+            "prettier --ignore-path .eslintignore --parser json --write"
+        ]
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.10.1",
+        "@babel/core": "^7.10.2",
+        "@babel/plugin-proposal-class-properties": "^7.10.1",
+        "@babel/preset-env": "^7.10.2",
+        "@babel/preset-flow": "^7.10.1",
+        "babel-core": "^7.0.0-bridge.0",
+        "babel-eslint": "^10.1.0",
+        "babel-jest": "^25.5.1",
+        "chai": "^4.2.0",
+        "eslint": "^6.8.0",
+        "eslint-config-bliss": "^4.7.0",
+        "eslint-plugin-flowtype-errors": "^4.3.0",
+        "eslint-plugin-prettier": "^3.1.3",
+        "flow-bin": "^0.123.0",
+        "husky": ">=4.2.5",
+        "jest-cli": "^25.5.3",
+        "lint-staged": "^10.2.2",
+        "yarn": "^1.21.0"
+    },
+    "engines": {
+        "node": ">=8",
+        "yarn": ">=1.16.0"
+    },
+    "eslintConfig": {
+        "extends": "bliss",
+        "rules": {
+            "consistent-return": "off",
+            "class-methods-use-this": "off",
+            "flowtype-errors/show-errors": "off",
+            "import/no-extraneous-dependencies": "off",
+            "max-classes-per-file": "off",
+            "no-continue": "off",
+            "no-param-reassign": "off",
+            "no-plusplus": "off",
+            "no-bitwise": "off",
+            "no-use-before-define": "off",
+            "no-underscore-dangle": "off",
+            "no-mixed-operators": "off",
+            "no-restricted-syntax": "off",
+            "jest/no-export": "off",
+            "jest/no-standalone-expect": "off"
+        }
+    },
+    "prettier": {
+        "tabWidth": 4
+    },
+    "renovate": {
+        "extends": ["bliss"]
+    },
+    "babel": {
+        "presets": [
+            [
+                "@babel/preset-env",
+                {
+                    "targets": {
+                        "node": "current"
+                    }
+                }
+            ],
+            "@babel/preset-flow"
+        ],
+        "plugins": ["@babel/plugin-proposal-class-properties"]
+    }
 }
